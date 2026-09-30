@@ -247,9 +247,16 @@ mark { background: linear-gradient(transparent 55%, color-mix(in srgb, var(--war
 .q-text { font-size: 17px; font-weight: 650; line-height: 1.6; margin: 0 0 12px; white-space: pre-line; }
 .q-passage {
   background: var(--surface-2); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; line-height: 1.7;
-  white-space: pre-line; margin: 0 0 14px; color: var(--text-2);
+  margin: 0 0 14px; color: var(--text-2);
 }
 .q-passage .code { font-family: ui-monospace, Consolas, monospace; }
+.q-passage .p-text { white-space: pre-wrap; }
+.q-passage .p-text + .p-text, .q-passage .p-text + .p-table, .q-passage .p-table + .p-text, .q-passage .p-table + .p-table { margin-top: 10px; }
+.q-passage .p-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.q-passage table { border-collapse: collapse; font-size: 13.5px; line-height: 1.5; white-space: nowrap; }
+.q-passage td { padding: 5px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.q-passage tr:first-child td { font-weight: 600; color: var(--text); }
+.q-passage tr:last-child td { border-bottom: 0; }
 .opts { display: grid; gap: 8px; }
 .opt {
   width: 100%; text-align: left; display: flex; gap: 12px; align-items: flex-start;

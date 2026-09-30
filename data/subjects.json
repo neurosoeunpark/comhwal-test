@@ -20,13 +20,28 @@
       "id": "s2",
       "short": "2과목",
       "name": "2과목 스프레드시트 일반",
-      "chapters": []
+      "chapters": [
+        "data/s2/ch1.json",
+        "data/s2/ch2.json",
+        "data/s2/ch3.json",
+        "data/s2/ch4.json",
+        "data/s2/ch5.json",
+        "data/s2/ch6.json",
+        "data/s2/ch7.json"
+      ]
     },
     {
       "id": "s3",
       "short": "3과목",
       "name": "3과목 데이터베이스 일반",
-      "chapters": []
+      "chapters": [
+        "data/s3/ch1.json",
+        "data/s3/ch2.json",
+        "data/s3/ch3.json",
+        "data/s3/ch4.json",
+        "data/s3/ch5.json",
+        "data/s3/ch6.json"
+      ]
     }
   ]
 }

@@ -70,6 +70,17 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   // **굵게**, ==형광펜== 만 지원하는 최소 마크업
   const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/==(.+?)==/g, '<mark>$1</mark>');
+  // 지문: 빈 줄로 나눈 덩어리마다, 모든 줄이 '|' 또는 두 칸 이상 공백으로 나뉘면 표로, 아니면 줄바꿈·들여쓰기를 살린 글로
+  const passageHTML = p => p.split(/\n\s*\n/).map(b => {
+    const lines = b.split('\n').filter(l => l.trim());
+    const pipe = lines.length > 1 && lines.every(l => l.includes('|'));
+    const split = l => pipe ? l.split('|').map(c => c.trim()) : l.replace(/\s+$/, '').split(/\s{2,}/);
+    if (lines.length > 1 && (pipe || lines.every(l => split(l).length > 1))) {
+      const rows = lines.map(split), n = Math.max(...rows.map(r => r.length));
+      return `<div class="p-table"><table>${rows.map(r => `<tr>${Array.from({ length: n }, (_, j) => `<td>${fmt(r[j] || '')}</td>`).join('')}</tr>`).join('')}</table></div>`;
+    }
+    return `<div class="p-text">${fmt(b.replace(/^\n+|\n+$/g, ''))}</div>`;
+  }).join('');
   const CIRCLE = ['①', '②', '③', '④', '⑤'];
   const chev = '<svg class="chev" width="18" height="18" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -370,7 +381,7 @@
           </div>
           <div class="q-progress"><i style="width:${pct(solvedN, qs.length)}%"></i></div>
           <p class="q-text">${fmt(q.question)}</p>
-          ${q.passage ? `<div class="q-passage">${fmt(q.passage)}</div>` : ''}
+          ${q.passage ? `<div class="q-passage">${passageHTML(q.passage)}</div>` : ''}
           <div class="opts">${optsHtml}</div>
           ${answered ? `
             <details class="result ${ok ? 'ok' : 'bad'}" open>
