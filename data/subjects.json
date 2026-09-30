@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "id": "s1",
+      "short": "1과목",
+      "name": "1과목 컴퓨터 일반",
+      "chapters": [
+        "data/s1/ch1.json",
+        "data/s1/ch2.json",
+        "data/s1/ch3.json",
+        "data/s1/ch4.json",
+        "data/s1/ch5.json",
+        "data/s1/ch6.json",
+        "data/s1/ch7.json",
+        "data/s1/ch8.json"
+      ]
+    },
+    {
+      "id": "s2",
+      "short": "2과목",
+      "name": "2과목 스프레드시트 일반",
+      "chapters": []
+    },
+    {
+      "id": "s3",
+      "short": "3과목",
+      "name": "3과목 데이터베이스 일반",
+      "chapters": []
+    }
+  ]
+}

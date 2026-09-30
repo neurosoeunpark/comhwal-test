@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>컴활 1급 필기</title>
+  <meta name="description" content="컴퓨터활용능력 1급 필기 섹션별 핵심 요약과 기출문제, 오답노트">
+  <meta name="theme-color" content="#2F5BEA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="컴활 1급">
+
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="icon-btn" id="backBtn" aria-label="뒤로" hidden>
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a class="brand" href="#/" id="brand">
+        <img src="icons/favicon.svg" alt="" width="26" height="26">
+        <span id="pageTitle">컴활 1급 필기</span>
+      </a>
+      <div class="topbar-right" id="topbarRight"></div>
+    </div>
+  </header>
+
+  <main id="app" class="container" aria-live="polite">
+    <div class="loading">불러오는 중…</div>
+  </main>
+
+  <nav class="tabbar" aria-label="주 메뉴">
+    <a href="#/" data-tab="home">
+      <svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10v16H5.5A1.5 1.5 0 0 1 4 18.5zM14 4h4.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H14z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span>목차</span>
+    </a>
+    <a href="#/random" data-tab="random">
+      <svg viewBox="0 0 24 24"><path d="M4 7h3.5c2 0 3 1 4.5 5s2.5 5 4.5 5H20M4 17h3.5c1.2 0 2-.4 2.8-1.4M13.7 8.4C14.5 7.4 15.3 7 16.5 7H20M17.5 4.5 20 7l-2.5 2.5M17.5 14.5 20 17l-2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>랜덤 풀이</span>
+    </a>
+    <a href="#/wrong" data-tab="wrong">
+      <svg viewBox="0 0 24 24"><path d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4-7 4V4.5a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span>오답노트</span>
+      <b class="badge" id="wrongBadge" hidden></b>
+    </a>
+    <a href="#/settings" data-tab="settings">
+      <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      <span>설정</span>
+    </a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

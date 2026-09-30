@@ -1,0 +1,16 @@
+{
+  "name": "컴활 1급 필기",
+  "short_name": "컴활 1급",
+  "description": "컴퓨터활용능력 1급 필기 섹션별 핵심 요약과 기출문제, 오답노트",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F5F6F8",
+  "theme_color": "#2F5BEA",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
