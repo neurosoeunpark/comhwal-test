@@ -222,6 +222,27 @@ a { color: inherit; text-decoration: none; }
 b, strong { font-weight: 700; }
 mark { background: linear-gradient(transparent 55%, color-mix(in srgb, var(--warn) 30%, transparent) 55%); color: inherit; padding: 0 1px; }
 
+.points-card { background: var(--brand-soft); border-color: transparent; }
+.points-card h3 { color: var(--brand); font-size: 16px; font-weight: 750; margin: 0 0 4px; letter-spacing: -0.02em; }
+.points-card ol { margin: 0; padding: 0; list-style: none; counter-reset: pt; }
+.points-card li { position: relative; padding-left: 26px; margin: 8px 0; font-size: 15px; line-height: 1.6; counter-increment: pt; }
+.points-card li::before { content: counter(pt); position: absolute; left: 0; top: .15em; width: 18px; height: 18px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 11.5px; font-weight: 700; display: grid; place-items: center; }
+
+.sum-table { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 2px -4px 6px; }
+.sum-table table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.5; }
+.sum-table th, .sum-table td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.sum-table th { font-size: 13px; font-weight: 700; color: var(--text-2); background: var(--surface-2); white-space: nowrap; }
+.sum-table td:first-child { font-weight: 650; white-space: nowrap; }
+.sum-table tr:last-child td { border-bottom: 0; }
+.sum-card .sum-table + ul { margin-top: 8px; }
+
+.blank-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.blank-bar .btn.on { background: var(--warn); border-color: var(--warn); color: #fff; }
+.blank-hint { font-size: 13px; color: var(--text-3); }
+.blanks mark { color: transparent; background: var(--warn-soft); border-bottom: 2px solid var(--warn); border-radius: 3px; cursor: pointer; transition: color .15s; }
+.blanks mark b { color: transparent; }
+.blanks mark.shown, .blanks mark.shown b { color: var(--text); }
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   border: 1px solid var(--line); background: var(--surface); color: var(--text);

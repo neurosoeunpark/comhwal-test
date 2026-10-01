@@ -1,5 +1,5 @@
 // 온라인이면 항상 최신 파일(네트워크 우선), 오프라인이면 캐시로 동작
-const CACHE = 'comhwal-v2';
+const CACHE = 'comhwal-v3';
 const SHELL = [
   './', 'index.html', 'css/style.css', 'js/app.js', 'manifest.webmanifest',
   'icons/favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',

@@ -288,15 +288,30 @@
   }
 
   function renderSummary(body, sec, prev, next) {
+    const table = t => `<div class="sum-table"><table>
+        ${t.head ? `<thead><tr>${t.head.map(c => `<th>${fmt(c)}</th>`).join('')}</tr></thead>` : ''}
+        <tbody>${t.rows.map(r => `<tr>${r.map(c => `<td>${fmt(c)}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table></div>`;
     const blocks = (sec.summary || []).map(b => `
       <section class="card sum-card">
         ${b.h ? `<h3>${fmt(b.h)}</h3>` : ''}
-        <ul>${(b.items || []).map(li).join('')}</ul>
+        ${b.table ? table(b.table) : ''}
+        ${(b.items || []).length ? `<ul>${b.items.map(li).join('')}</ul>` : ''}
       </section>`).join('');
+    const points = (sec.points || []).length ? `
+      <section class="card points-card">
+        <h3>시험 포인트</h3>
+        <ol>${sec.points.map(p => `<li>${fmt(p)}</li>`).join('')}</ol>
+      </section>` : '';
     const done = !!S.done[sec.id];
+    const hasMark = /==.+?==/.test(JSON.stringify([sec.points, sec.summary]));
     body.innerHTML = `
       ${(sec.key_terms || []).length ? `<div class="terms" style="margin-bottom:14px">${sec.key_terms.map(t => `<span class="term">#${esc(t)}</span>`).join('')}</div>` : ''}
-      <div class="stack">${blocks || '<div class="empty">요약이 아직 없어요.</div>'}</div>
+      ${hasMark ? `<div class="blank-bar">
+        <button class="btn sm ${S.blankMode ? 'on' : ''}" id="blankBtn" aria-pressed="${!!S.blankMode}">빈칸 모드 ${S.blankMode ? '켜짐' : '꺼짐'}</button>
+        <span class="blank-hint">${S.blankMode ? '빈칸을 누르면 답이 보여요' : '형광펜 부분을 가리고 떠올려 보세요'}</span>
+      </div>` : ''}
+      <div class="stack sum-body ${S.blankMode && hasMark ? 'blanks' : ''}">${points}${blocks || '<div class="empty">요약이 아직 없어요.</div>'}</div>
       <div class="stack" style="margin-top:18px">
         <button class="btn block ${done ? 'ok' : ''}" id="doneBtn">${done ? '✓ 학습 완료' : '학습 완료로 표시'}</button>
         ${(sec.quizzes || []).length ? `<a class="btn primary block" href="#/sec/${sec.id}?tab=quiz" id="toQuiz">문제 풀러 가기 (${sec.quizzes.length})</a>` : ''}
@@ -317,6 +332,16 @@
     if (tq) tq.addEventListener('click', e => {
       e.preventDefault();
       $app.querySelector('.seg button[data-tab="quiz"]').click();
+    });
+    const bb = body.querySelector('#blankBtn');
+    if (bb) bb.addEventListener('click', () => {
+      S.blankMode = !S.blankMode;
+      save();
+      renderSummary(body, sec, prev, next);
+    });
+    body.querySelector('.sum-body').addEventListener('click', e => {
+      const m = e.target.closest('.blanks mark');
+      if (m) m.classList.toggle('shown');
     });
   }
   function li(it) {
